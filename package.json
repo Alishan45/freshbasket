@@ -13,7 +13,8 @@
   ],
   "scripts": {
     "start": "node server/src/server.js",
-    "build": "npm --prefix client run build",
+    "build": "npm --prefix client run build && rm -rf dist && cp -r client/dist dist",
+    "vercel-build": "npm --prefix client install && npm --prefix client run build && rm -rf dist && cp -r client/dist dist",
     "test:server": "cd server && npm test",
     "test:client": "cd client && npm test",
     "test": "npm run test:server && npm run test:client",
