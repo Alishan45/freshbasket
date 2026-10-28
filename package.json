@@ -1,0 +1,44 @@
+{
+  "name": "freshbasket-monorepo",
+  "version": "2.0.0",
+  "description": "FreshBasket - Farm-to-Table Online Grocery & Produce Platform (React + Node.js + SQLite)",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.x"
+  },
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "scripts": {
+    "start": "node server/src/server.js",
+    "build": "npm --prefix client run build",
+    "test:server": "cd server && npm test",
+    "test:client": "cd client && npm test",
+    "test": "npm run test:server && npm run test:client",
+    "dev:server": "cd server && npm run dev",
+    "dev:client": "cd client && npm run dev",
+    "seed": "node -e \"import('./server/src/db/seeds.js').then(m => m.runSeeds())\""
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^1.4.5-lts.1",
+    "nodemailer": "^10.2.1"
+  },
+  "keywords": [
+    "freshbasket",
+    "react",
+    "vite",
+    "tailwindcss",
+    "express",
+    "sqlite",
+    "grocery-marketplace"
+  ],
+  "author": "Muzammil Shabbir (BC250206138)",
+  "license": "MIT"
+}
