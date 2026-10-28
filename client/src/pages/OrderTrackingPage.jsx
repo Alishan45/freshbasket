@@ -237,8 +237,8 @@ export default function OrderTrackingPage() {
 
             {/* 5-Stage Visual Timeline Progress */}
             {order.order_status !== 'Cancelled' ? (
-              <div className="bg-stone-50 p-6 sm:p-8 rounded-3xl border border-stone-200/80">
-                <div className="relative flex items-center justify-between">
+              <div className="bg-stone-50 p-4 sm:p-8 rounded-3xl border border-stone-200/80 overflow-x-auto no-scrollbar">
+                <div className="relative flex items-center justify-between min-w-[320px] sm:min-w-0 px-2 sm:px-0">
                   
                   {/* Connecting Line */}
                   <div className="absolute left-6 right-6 top-5 h-1.5 bg-stone-200 -z-0">
@@ -257,13 +257,13 @@ export default function OrderTrackingPage() {
                     return (
                       <div key={stg.key} className="relative z-10 flex flex-col items-center text-center">
                         <div
-                          className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-xs shadow-md border-4 border-white transition-all ${
+                          className={`w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center font-bold text-xs shadow-md border-4 border-white transition-all ${
                             isDone ? 'bg-brand-600 text-white' : 'bg-stone-200 text-stone-400'
                           } ${isCurrent && order.order_status !== 'Delivered' ? 'animate-pulse scale-110 ring-4 ring-brand-500/20' : ''}`}
                         >
-                          <IconComp className="w-4 h-4" />
+                          <IconComp className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                         </div>
-                        <span className={`mt-1.5 text-[10px] sm:text-xs font-bold leading-tight block max-w-[62px] sm:max-w-[85px] ${isCurrent ? 'text-brand-800' : 'text-stone-700'}`}>
+                        <span className={`mt-1.5 text-[9px] sm:text-xs font-bold leading-tight block max-w-[58px] sm:max-w-[85px] ${isCurrent ? 'text-brand-800' : 'text-stone-700'}`}>
                           {stg.key}
                         </span>
                         <span className="text-[9px] sm:text-[10px] text-stone-400 hidden md:block max-w-[80px] leading-tight mt-0.5">

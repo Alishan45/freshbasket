@@ -320,11 +320,11 @@ export default function SupplierPortalPage() {
           </div>
         )}
 
-        {/* Navigation Tabs */}
-        <div className="flex border-b border-neutral-200 mb-8 bg-white rounded-2xl p-1.5 shadow-sm">
+        {/* Navigation Tabs (Swipeable on Mobile) */}
+        <div className="flex overflow-x-auto no-scrollbar whitespace-nowrap border-b border-neutral-200 mb-8 bg-white rounded-2xl p-1.5 shadow-sm gap-1">
           <button
             onClick={() => setActiveTab('catalog')}
-            className={`flex-1 py-3 px-4 rounded-xl text-xs sm:text-sm font-semibold transition-all flex items-center justify-center gap-2 ${
+            className={`flex-1 min-w-[200px] sm:min-w-0 py-3 px-4 rounded-xl text-xs sm:text-sm font-semibold transition-all flex items-center justify-center gap-2 shrink-0 ${
               activeTab === 'catalog'
                 ? 'bg-emerald-600 text-white shadow'
                 : 'text-neutral-600 hover:text-neutral-900 hover:bg-neutral-50'
@@ -335,7 +335,7 @@ export default function SupplierPortalPage() {
           </button>
           <button
             onClick={() => setActiveTab('harvest')}
-            className={`flex-1 py-3 px-4 rounded-xl text-xs sm:text-sm font-semibold transition-all flex items-center justify-center gap-2 ${
+            className={`flex-1 min-w-[200px] sm:min-w-0 py-3 px-4 rounded-xl text-xs sm:text-sm font-semibold transition-all flex items-center justify-center gap-2 shrink-0 ${
               activeTab === 'harvest'
                 ? 'bg-emerald-600 text-white shadow'
                 : 'text-neutral-600 hover:text-neutral-900 hover:bg-neutral-50'
@@ -346,7 +346,7 @@ export default function SupplierPortalPage() {
           </button>
           <button
             onClick={() => setActiveTab('orders')}
-            className={`flex-1 py-3 px-4 rounded-xl text-xs sm:text-sm font-semibold transition-all flex items-center justify-center gap-2 ${
+            className={`flex-1 min-w-[200px] sm:min-w-0 py-3 px-4 rounded-xl text-xs sm:text-sm font-semibold transition-all flex items-center justify-center gap-2 shrink-0 ${
               activeTab === 'orders'
                 ? 'bg-emerald-600 text-white shadow'
                 : 'text-neutral-600 hover:text-neutral-900 hover:bg-neutral-50'

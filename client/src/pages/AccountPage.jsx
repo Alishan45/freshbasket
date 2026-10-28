@@ -179,9 +179,9 @@ export default function AccountPage() {
         </button>
       </div>
 
-      {/* Tabs Navigation Toolbar */}
-      <div className="bg-white p-2 rounded-2xl border border-stone-200 shadow-xs">
-        <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 text-xs font-bold">
+      {/* Tabs Navigation Toolbar (Horizontally Swipeable on Mobile) */}
+      <div className="bg-white p-1.5 sm:p-2 rounded-2xl border border-stone-200 shadow-xs overflow-x-auto no-scrollbar">
+        <div className="flex items-center gap-1.5 sm:gap-2 text-xs font-bold whitespace-nowrap min-w-max">
           {[
             { key: 'profile', label: 'Personal Profile', icon: User },
             { key: 'addresses', label: 'Saved Addresses', icon: MapPin },

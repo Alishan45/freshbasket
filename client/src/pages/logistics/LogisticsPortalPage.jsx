@@ -261,8 +261,8 @@ export default function LogisticsPortalPage() {
       {/* Filter Tabs & Search Bar */}
       <div className="bg-white p-4 sm:p-5 rounded-3xl border border-stone-200 shadow-xs flex flex-col md:flex-row items-center justify-between gap-4">
         
-        {/* Status Stage Tabs */}
-        <div className="flex items-center gap-1.5 overflow-x-auto w-full md:w-auto pb-2 md:pb-0 text-xs font-bold">
+        {/* Status Stage Tabs (Swipeable on Mobile) */}
+        <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar w-full md:w-auto pb-2 md:pb-0 text-xs font-bold whitespace-nowrap">
           <button
             onClick={() => setActiveTab('active')}
             className={`px-3 py-2 rounded-xl transition shrink-0 ${activeTab === 'active' ? 'bg-blue-600 text-white shadow-xs' : 'text-stone-600 hover:bg-stone-100'}`}

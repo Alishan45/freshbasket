@@ -57,56 +57,56 @@ export default function Navbar() {
   return (
     <>
       {/* Top Announcement Bar & Demo Switcher */}
-      <div className="bg-gradient-to-r from-brand-900 via-brand-800 to-emerald-900 text-white text-xs py-2 px-4 shadow-sm">
+      <div className="bg-gradient-to-r from-brand-900 via-brand-800 to-emerald-900 text-white text-xs py-2 px-3 sm:px-4 shadow-sm">
         <div className="max-w-7xl mx-auto flex items-center justify-between flex-wrap gap-2">
           
           <div className="flex items-center gap-2">
             <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-brand-500/30 text-brand-100 border border-brand-400/30 animate-pulse">
               🌱 Morning Harvest
             </span>
-            <span className="font-medium hidden sm:inline">
+            <span className="font-medium hidden md:inline">
               Farm-Direct Produce • 100% Quality Inspected • Cash on Delivery (COD) Available
             </span>
           </div>
 
-          {/* Quick 1-Click Demo Switcher */}
-          <div className="flex items-center gap-3">
-            <div className="flex items-center gap-1 bg-black/20 p-1 rounded-lg text-[11px]">
-              <span className="text-stone-300 font-semibold px-1">Role:</span>
+          {/* Quick 1-Click Demo Switcher (Horizontally scrollable on small screens) */}
+          <div className="flex items-center gap-2 sm:gap-3 overflow-x-auto no-scrollbar max-w-full">
+            <div className="flex items-center gap-1 bg-black/20 p-1 rounded-lg text-[11px] shrink-0">
+              <span className="text-stone-300 font-semibold px-1 hidden sm:inline">Role:</span>
               <button
                 onClick={() => loginDemo('customer')}
-                className={`px-2 py-0.5 rounded font-bold transition ${user?.role === 'customer' ? 'bg-white text-brand-800 shadow-xs' : 'text-stone-300 hover:text-white'}`}
+                className={`px-2 py-0.5 rounded font-bold transition shrink-0 ${user?.role === 'customer' ? 'bg-white text-brand-800 shadow-xs' : 'text-stone-300 hover:text-white'}`}
               >
                 Customer
               </button>
               <button
                 onClick={() => loginDemo('admin')}
-                className={`px-2 py-0.5 rounded font-bold transition ${isAdmin ? 'bg-brand-500 text-white shadow-xs' : 'text-stone-300 hover:text-white'}`}
+                className={`px-2 py-0.5 rounded font-bold transition shrink-0 ${isAdmin ? 'bg-brand-500 text-white shadow-xs' : 'text-stone-300 hover:text-white'}`}
               >
                 Admin
               </button>
               <button
                 onClick={() => loginDemo('supplier')}
-                className={`px-2 py-0.5 rounded font-bold transition ${isSupplier ? 'bg-amber-500 text-stone-900 shadow-xs' : 'text-stone-300 hover:text-white'}`}
+                className={`px-2 py-0.5 rounded font-bold transition shrink-0 ${isSupplier ? 'bg-amber-500 text-stone-900 shadow-xs' : 'text-stone-300 hover:text-white'}`}
               >
                 Supplier
               </button>
               <button
                 onClick={() => loginDemo('logistics')}
-                className={`px-2 py-0.5 rounded font-bold transition ${isLogistics ? 'bg-blue-600 text-white shadow-xs' : 'text-stone-300 hover:text-white'}`}
+                className={`px-2 py-0.5 rounded font-bold transition shrink-0 ${isLogistics ? 'bg-blue-600 text-white shadow-xs' : 'text-stone-300 hover:text-white'}`}
               >
                 Logistics
               </button>
             </div>
 
             {(isLogistics || isAdmin) && (
-              <Link to="/logistics" className="hover:text-blue-200 text-blue-100 flex items-center gap-1.5 font-bold transition bg-blue-600/40 px-2 py-0.5 rounded-md border border-blue-400/40">
+              <Link to="/logistics" className="hover:text-blue-200 text-blue-100 flex items-center gap-1.5 font-bold transition bg-blue-600/40 px-2 py-0.5 rounded-md border border-blue-400/40 shrink-0">
                 <Truck className="w-3.5 h-3.5 text-blue-300" />
                 <span>Logistics Hub</span>
               </Link>
             )}
 
-            <Link to="/track-order" className="hover:text-brand-200 underline flex items-center gap-1 font-semibold transition">
+            <Link to="/track-order" className="hover:text-brand-200 underline flex items-center gap-1 font-semibold transition shrink-0">
               <Truck className="w-3.5 h-3.5" />
               <span>Track Order</span>
             </Link>
@@ -117,36 +117,38 @@ export default function Navbar() {
 
       {/* Main Navigation Header */}
       <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-stone-200 shadow-xs">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-20 gap-4">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16 sm:h-20 gap-2 sm:gap-4">
             
-            {/* Mobile Menu Toggle */}
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-2 text-stone-600 hover:text-stone-900 rounded-xl hover:bg-stone-100"
-            >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
+            {/* Left: Mobile Menu Toggle & Brand Logo */}
+            <div className="flex items-center gap-2 sm:gap-3">
+              <button
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="lg:hidden p-2 text-stone-600 hover:text-stone-900 rounded-xl hover:bg-stone-100"
+                aria-label="Toggle navigation menu"
+              >
+                {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              </button>
 
-            {/* Brand Logo */}
-            <Link to="/" className="flex items-center gap-3 group">
-              <div className="w-11 h-11 rounded-2xl bg-gradient-to-br from-brand-600 to-emerald-700 flex items-center justify-center text-white shadow-md shadow-brand-600/25 group-hover:scale-105 transition-transform">
-                <Apple className="w-6 h-6 text-white" />
-              </div>
-              <div>
-                <div className="flex items-center gap-1.5">
-                  <span className="font-heading font-extrabold text-2xl tracking-tight text-stone-900">
-                    Fresh<span className="text-brand-600">Basket</span>
-                  </span>
-                  <span className="text-[10px] font-bold uppercase tracking-wider bg-brand-100 text-brand-800 px-1.5 py-0.5 rounded-md">
-                    Farm Fresh
-                  </span>
+              <Link to="/" className="flex items-center gap-2 sm:gap-3 group">
+                <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-2xl bg-gradient-to-br from-brand-600 to-emerald-700 flex items-center justify-center text-white shadow-md shadow-brand-600/25 group-hover:scale-105 transition-transform shrink-0">
+                  <Apple className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                 </div>
-                <p className="text-[11px] text-stone-500 font-medium hidden sm:block">Pure • Organic • Same-Day Picked</p>
-              </div>
-            </Link>
+                <div>
+                  <div className="flex items-center gap-1 sm:gap-1.5">
+                    <span className="font-heading font-extrabold text-xl sm:text-2xl tracking-tight text-stone-900">
+                      Fresh<span className="text-brand-600">Basket</span>
+                    </span>
+                    <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider bg-brand-100 text-brand-800 px-1 sm:px-1.5 py-0.5 rounded-md hidden xs:inline-block">
+                      Farm Fresh
+                    </span>
+                  </div>
+                  <p className="text-[11px] text-stone-500 font-medium hidden sm:block">Pure • Organic • Same-Day Picked</p>
+                </div>
+              </Link>
+            </div>
 
-            {/* Delivery Hub Selector */}
+            {/* Delivery Hub Selector (Desktop) */}
             <div className="relative hidden xl:block">
               <button
                 onClick={() => setHubDropdown(!hubDropdown)}
@@ -189,9 +191,9 @@ export default function Navbar() {
               )}
             </div>
 
-            {/* Search Bar */}
-            <form onSubmit={handleSearchSubmit} className="flex-1 max-w-lg mx-2 relative">
-              <div className="relative">
+            {/* Desktop Search Bar (Hidden on Mobile) */}
+            <form onSubmit={handleSearchSubmit} className="hidden md:flex flex-1 max-w-lg mx-2 relative">
+              <div className="relative w-full">
                 <Search className="w-4 h-4 text-stone-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
                 <input
                   type="text"
@@ -210,7 +212,7 @@ export default function Navbar() {
             </form>
 
             {/* Actions: Wishlist, Cart, User Profile */}
-            <div className="flex items-center gap-2 sm:gap-3">
+            <div className="flex items-center gap-1.5 sm:gap-3">
               
               {/* Wishlist Trigger */}
               <Link
@@ -337,27 +339,48 @@ export default function Navbar() {
             </div>
 
           </div>
+
+          {/* Mobile Dedicated Full-Width Search Bar */}
+          <div className="pb-3 md:hidden">
+            <form onSubmit={handleSearchSubmit} className="relative">
+              <Search className="w-4 h-4 text-stone-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search fresh mangoes, apples, spinach..."
+                className="w-full pl-10 pr-20 py-2 bg-stone-100 border border-stone-200 focus:border-brand-500 focus:bg-white rounded-xl text-xs transition outline-none"
+              />
+              <button
+                type="submit"
+                className="absolute right-1 top-1/2 -translate-y-1/2 px-3 py-1 bg-brand-600 hover:bg-brand-700 text-white rounded-lg text-xs font-bold transition"
+              >
+                Search
+              </button>
+            </form>
+          </div>
+
         </div>
 
-        {/* Category Strip */}
-        <div className="border-t border-stone-100 bg-stone-50/70 px-4 sm:px-6 lg:px-8 py-2">
-          <div className="max-w-7xl mx-auto flex items-center flex-wrap gap-1.5 sm:gap-2 text-xs font-semibold">
-            <Link to="/shop" className="px-3 py-1.5 rounded-full hover:bg-white text-stone-700 hover:text-brand-600 transition">
+        {/* Category Strip (Horizontally Swipeable on Mobile) */}
+        <div className="border-t border-stone-100 bg-stone-50/70 px-3 sm:px-6 lg:px-8 py-2">
+          <div className="max-w-7xl mx-auto flex items-center overflow-x-auto no-scrollbar gap-1.5 sm:gap-2 text-xs font-semibold whitespace-nowrap">
+            <Link to="/shop" className="px-3 py-1.5 rounded-full hover:bg-white text-stone-700 hover:text-brand-600 transition shrink-0">
               All Produce (14)
             </Link>
-            <Link to="/shop?category=fruits" className="px-3 py-1.5 rounded-full hover:bg-white text-stone-700 hover:text-brand-600 transition">
+            <Link to="/shop?category=fruits" className="px-3 py-1.5 rounded-full hover:bg-white text-stone-700 hover:text-brand-600 transition shrink-0">
               🍎 Fresh Fruits
             </Link>
-            <Link to="/shop?category=vegetables" className="px-3 py-1.5 rounded-full hover:bg-white text-stone-700 hover:text-brand-600 transition">
+            <Link to="/shop?category=vegetables" className="px-3 py-1.5 rounded-full hover:bg-white text-stone-700 hover:text-brand-600 transition shrink-0">
               🥕 Farm Vegetables
             </Link>
-            <Link to="/shop?category=leafy-greens" className="px-3 py-1.5 rounded-full hover:bg-white text-stone-700 hover:text-brand-600 transition">
+            <Link to="/shop?category=leafy-greens" className="px-3 py-1.5 rounded-full hover:bg-white text-stone-700 hover:text-brand-600 transition shrink-0">
               🥬 Leafy Greens
             </Link>
-            <Link to="/shop?category=organic" className="px-3 py-1.5 rounded-full hover:bg-white text-stone-700 hover:text-brand-600 transition">
+            <Link to="/shop?category=organic" className="px-3 py-1.5 rounded-full hover:bg-white text-stone-700 hover:text-brand-600 transition shrink-0">
               🌿 100% Organic Certified
             </Link>
-            <Link to="/shop?category=seasonal" className="px-3 py-1.5 rounded-full hover:bg-white text-stone-700 hover:text-brand-600 transition">
+            <Link to="/shop?category=seasonal" className="px-3 py-1.5 rounded-full hover:bg-white text-stone-700 hover:text-brand-600 transition shrink-0">
               ☀️ Seasonal Harvest
             </Link>
           </div>

@@ -170,10 +170,10 @@ export default function HomePage() {
                 Eliminate middleman storage and multiday market delay. Experience crisp, nutrient-dense fruits and vegetables picked directly from verified local orchards with <strong className="text-stone-900 font-semibold">Cash on Delivery</strong> and a 100% freshness guarantee.
               </p>
 
-              <div className="flex flex-wrap items-center gap-3 pt-2">
+              <div className="flex flex-col sm:flex-row sm:items-center gap-3 pt-2">
                 <Link
                   to="/shop"
-                  className="px-6 py-3.5 bg-brand-600 hover:bg-brand-700 text-white font-heading font-bold rounded-2xl shadow-lg shadow-brand-600/30 transition-all flex items-center gap-2 group"
+                  className="w-full sm:w-auto px-6 py-3.5 bg-brand-600 hover:bg-brand-700 text-white font-heading font-bold rounded-2xl shadow-lg shadow-brand-600/30 transition-all flex items-center justify-center gap-2 group text-center"
                 >
                   <span>Shop Today's Harvest</span>
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -181,7 +181,7 @@ export default function HomePage() {
 
                 <Link
                   to="/track-order"
-                  className="px-5 py-3.5 bg-white hover:bg-stone-100 text-stone-700 border border-stone-200 font-heading font-bold rounded-2xl shadow-xs transition flex items-center gap-2"
+                  className="w-full sm:w-auto px-5 py-3.5 bg-white hover:bg-stone-100 text-stone-700 border border-stone-200 font-heading font-bold rounded-2xl shadow-xs transition flex items-center justify-center gap-2 text-center"
                 >
                   <Clock className="w-4 h-4 text-brand-600" />
                   <span>Live Order Tracker</span>
@@ -189,7 +189,7 @@ export default function HomePage() {
 
                 <Link
                   to="/admin"
-                  className="px-4 py-3.5 bg-stone-100 hover:bg-stone-200 text-stone-700 border border-stone-300 rounded-2xl text-xs font-semibold flex items-center gap-1.5"
+                  className="w-full sm:w-auto px-4 py-3.5 bg-stone-100 hover:bg-stone-200 text-stone-700 border border-stone-300 rounded-2xl text-xs font-semibold flex items-center justify-center gap-1.5 text-center"
                 >
                   <ShieldCheck className="w-4 h-4 text-emerald-600" />
                   <span>Admin Quality Hub</span>

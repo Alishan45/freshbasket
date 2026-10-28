@@ -504,7 +504,7 @@ export default function ProductDetailPage() {
           <h3 className="text-xl font-heading font-extrabold text-stone-900">
             Frequently Bought Together
           </h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
             {product.related_products.map(rel => (
               <ProductCard key={rel.id} product={rel} />
             ))}
