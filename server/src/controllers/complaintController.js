@@ -128,7 +128,11 @@ export async function submitComplaint(req, res) {
     });
   } catch (error) {
     console.error('submitComplaint error:', error);
-    return res.status(500).json({ success: false, message: 'Failed to record complaint. Please try again.' });
+    return res.status(500).json({
+      success: false,
+      message: 'Failed to record complaint. Please try again.',
+      error: error.message
+    });
   }
 }
 
