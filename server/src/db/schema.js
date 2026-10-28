@@ -235,5 +235,32 @@ export function initializeSchema() {
       created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
     );
   `);
+
+  // Ensure complaints table has all required columns across cold/warm starts
+  try {
+    const cols = db.prepare("PRAGMA table_info(complaints)").all();
+    const colNames = cols.map(c => c.name);
+    if (!colNames.includes('ticket_number')) {
+      db.exec("ALTER TABLE complaints ADD COLUMN ticket_number TEXT;");
+    }
+    if (!colNames.includes('customer_name')) {
+      db.exec("ALTER TABLE complaints ADD COLUMN customer_name TEXT;");
+    }
+    if (!colNames.includes('customer_email')) {
+      db.exec("ALTER TABLE complaints ADD COLUMN customer_email TEXT;");
+    }
+    if (!colNames.includes('customer_phone')) {
+      db.exec("ALTER TABLE complaints ADD COLUMN customer_phone TEXT;");
+    }
+    if (!colNames.includes('category')) {
+      db.exec("ALTER TABLE complaints ADD COLUMN category TEXT DEFAULT 'Freshness & Quality';");
+    }
+    if (!colNames.includes('attachment_url')) {
+      db.exec("ALTER TABLE complaints ADD COLUMN attachment_url TEXT;");
+    }
+  } catch (migErr) {
+    console.warn('Complaints column migration note:', migErr.message);
+  }
+
   console.log('✓ SQLite Relational Schema initialized successfully.');
 }
